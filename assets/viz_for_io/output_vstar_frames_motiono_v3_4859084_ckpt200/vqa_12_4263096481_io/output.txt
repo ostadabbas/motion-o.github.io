@@ -1,0 +1,6 @@
+Question: who holds the fish?
+
+Reasoning:
+The video shows a person preparing a fish on a table. Initially, the <obj>person's hand</obj><box>[0,0,222,224]</box>at<t>1.4</t>s is seen holding the fish steady while another hand uses scissors to cut along its body. As the preparation continues, the <obj>person's hand</obj><box>[0,0,222,224]</box>at<t>5.6</t>s<motion obj="person's hand" dir="STAT" speed="stationary" scale="stable"/> remains firmly gripping the fish, ensuring it stays in place for the cutting process.
+
+Answer: A person's hands hold the fish steady on the table as they prepare it.

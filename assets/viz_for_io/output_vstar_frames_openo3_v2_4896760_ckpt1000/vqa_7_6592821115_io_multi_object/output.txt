@@ -1,0 +1,6 @@
+Question: who hugs the child in white on the ground?
+
+Reasoning:
+The video shows a woman sitting on the floor. A <obj>child in white</obj><box>[313,101,588,420]</box>at<t>5.0</t>s<motion obj="child in white" dir="STAT" speed="stationary" scale="stable"/> is seen crawling towards her. Subsequently, the <obj>woman</obj><box>[101,63,408,420]</box>at<t>20.0</t>s<motion obj="woman" dir="STAT" speed="stationary" scale="stable"/> picks up the <obj>child in white</obj><box>[164,112,353,319]</box>at<t>20.0</t>s<motion obj="child in white" dir="W" speed="slow" scale="stable"/> and holds her close, confirming that she is the one who hugs the child.
+
+Answer: The woman hugs the child in white on the ground.

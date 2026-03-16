@@ -1,0 +1,6 @@
+Question: who does the adult hold hand of?
+
+Reasoning:
+The video shows an adult helping a baby learn to walk. At the beginning of the clip, the <obj>baby</obj><box>[223,130,370,340]</box>at<t>1.5</t>s is holding onto the adult's hands for support as they take their first steps. As the baby continues to practice walking, the adult holds the baby's hands to help them maintain balance. For instance, the <obj>baby</obj><box>[223,130,370,340]</box>at<t>3.0</t>s<motion obj="baby" dir="W" speed="slow" scale="stable"/> is still holding the adult's hands while learning to walk. This interaction continues throughout the segment, as seen again when the <obj>baby</obj><box>[223,130,370,340]</box>at<t>12.0</t>s<motion obj="baby" dir="E" speed="slow" scale="stable"/> is holding the adult's hands. Therefore, the adult is holding the hand of the baby.
+
+Answer: The adult holds the hand of a baby.

@@ -1,0 +1,6 @@
+Question: What did Howard do after he said about Raj wanting to have fun ?
+
+Reasoning:
+The video shows Howard's actions immediately after he says "Raj wants to have fun." At this point, <obj>Howard</obj><box>[273,45,481,336]</box>at<t>4.0</t>s<motion obj="Howard" dir="W" speed="slow" scale="stable"/> is standing up from his chair while holding a water bottle. He then proceeds to pour water into a glass held by Raj, who is seated on the couch. This sequence of actions directly follows Howard's statement.
+
+Answer: After saying that Raj wants to have fun, Howard stood up from his chair, picked up a water bottle, and poured water into a glass for Raj.

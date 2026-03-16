@@ -1,0 +1,6 @@
+Question: what bites the white dog?
+
+Reasoning:
+The video shows two dogs interacting. A <obj>white dog</obj><box>[0,101,302,336]</box>at<t>2.3</t>s is lying on its side while another dog, which has light brown fur, is seen biting its neck. This action continues as the <obj>light brown dog</obj><box>[160,0,644,336]</box>at<t>6.9</t>s<motion obj="light brown dog" dir="E" speed="slow" scale="approaching"/> keeps its mouth open and bites the white dog's neck. The interaction persists, with the <obj>light brown dog</obj><box>[160,0,644,336]</box>at<t>13.8</t>s<motion obj="light brown dog" dir="W" speed="fast" scale="stable"/> still engaged in this behavior. Therefore, the light brown dog is the one biting the white dog.
+
+Answer: A light brown dog is seen biting the white dog's neck.

@@ -1,0 +1,6 @@
+Question: What was Sheldon doing when Penny said something about grad school ?
+
+Reasoning:
+The video shows a conversation between <obj>Penny</obj><box>[214,0,448,336]</box>at<t>3.7</t>s<motion obj="Penny" dir="STAT" speed="stationary" scale="stable"/> and <obj>Sheldon</obj><box>[0,0,214,336]</box>at<t>3.7</t>s<motion obj="Sheldon" dir="STAT" speed="stationary" scale="stable"/> in a laundry room. Penny is speaking to him, and at this moment, she mentions that she is going to grad school. Immediately after she says this, the camera focuses on <obj>Sheldon</obj><box>[113,0,403,336]</box>at<t>11.7</t>s<motion obj="Sheldon" dir="STAT" speed="stationary" scale="stable"/>, who is looking down at some clothes on the table. This visual evidence confirms that he was folding clothes while Penny was talking.
+
+Answer: Sheldon was folding clothes on the table.

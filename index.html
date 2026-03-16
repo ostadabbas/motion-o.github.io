@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motion-o: Trajectory-Grounded Video Reasoning</title>
+  <meta name="description" content="Project page for Motion-o: Trajectory-Grounded Video Reasoning.">
+  <link rel="icon" type="image/png" href="./assets/motion-os.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="wordmark" href="#top">Motion-o</a>
+      <nav class="site-nav">
+        <a href="#idea">Idea</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#comparison">Comparison</a>
+        <a href="#reasoning-demo">Demo</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero-header">
+        <div class="hero-copy full-hero hero-top">
+          <div class="hero-title-row">
+            <div class="logo-toggle-wrap">
+              <button
+                class="rotating-logo"
+                id="rotating-logo"
+                type="button"
+                aria-label="Open reasoning ingredients image">
+                <span class="logo-face front">
+                  <img src="./assets/motion-os.png" alt="Motion-o logo front design">
+                </span>
+                <span class="logo-face back">
+                  <img src="./assets/motion-o-box.png" alt="Motion-o packaging back design">
+                </span>
+              </button>
+              <span class="logo-hint">(click to see motion-o ingredients)</span>
+            </div>
+            <h1>Motion-o: Trajectory-Grounded Video Reasoning</h1>
+          </div>
+          <p class="hero-lede">
+            Motion-o extends grounded video reasoning from <span>where</span> and <span>when</span> to
+            <span>how objects move</span> with a Spatial-Temporal-Trajectory evidence chain and a structured Motion Chain of Thought.
+          </p>
+          <div class="hero-actions">
+            <a class="button secondary" href="#reasoning-demo">Interactive Demo</a>
+          </div>
+          <div class="hero-badges" style="display: flex; gap: 12px; align-items: center; justify-content: center; margin-top: 16px;">
+            <img src="https://img.shields.io/badge/arXiv-Coming_Soon-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white" alt="arXiv Paper Coming Soon">
+            <a href="https://github.com/ostadabbas/Motion-o" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.shields.io/badge/GitHub-Motion--o-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repository">
+            </a>
+            <a href="https://huggingface.co/bishoygaloaa/motion-o" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.shields.io/badge/🤗_Hugging_Face-motion--o-FFD21E?style=for-the-badge" alt="Hugging Face Model">
+            </a>
+          </div>
+          <div class="hero-paper-copy">
+            <p>
+              Recent video reasoning systems can produce fluent <code>&lt;think&gt;</code> traces, but those traces are often weakly grounded:
+              they do not explicitly tie claims back to where and when evidence occurs in the video, and they do not encode the motion that
+              connects successive observations. Motion-o frames this missing capability as
+              <strong>Spatial-Temporal-Trajectory reasoning</strong>.
+            </p>
+            <p>
+              The core mechanism is a trajectory-faithful evidence chain: timestamped
+              <code>&lt;obj&gt;</code>, <code>&lt;box&gt;</code>, and <code>&lt;t&gt;</code> observations paired with a structured
+              <code>&lt;motion/&gt;</code> tag that summarizes direction, speed, and scale change. This turns motion from an implicit interpolation step
+              into an explicit and verifiable part of the reasoning process, while requiring no architectural modification to the underlying model.
+            </p>
+          </div>
+          <section id="idea" class="idea-grid">
+            <article class="text-card">
+              <p class="section-label">Why Motion-o</p>
+              <h2>From snapshots to trajectories</h2>
+              <p>
+                Existing grounded video models can localize evidence in space and time, but usually leave the motion connecting those observations implicit.
+                Motion-o formalizes that missing dimension as <strong>Spatial-Temporal-Trajectory (STT) reasoning</strong>.
+              </p>
+              <p>
+                Instead of relying on fluent but weakly grounded narration, Motion-o pairs
+                <code>&lt;obj&gt;</code>, <code>&lt;box&gt;</code>, and <code>&lt;t&gt;</code> evidence with a structured
+                <code>&lt;motion/&gt;</code> tag so trajectory claims are explicit and verifiable.
+              </p>
+            </article>
+
+            <article class="pillars-card">
+              <p class="section-label">STT Evidence Chain</p>
+              <div class="pillar-list">
+                <div class="pillar">
+                  <span class="pillar-kicker">Spatial</span>
+                  <strong>&lt;obj&gt; + &lt;box&gt;</strong>
+                  <p>Ground the relevant object.</p>
+                </div>
+                <div class="pillar">
+                  <span class="pillar-kicker">Temporal</span>
+                  <strong>&lt;t&gt;</strong>
+                  <p>Anchor the observation in time.</p>
+                </div>
+                <div class="pillar accent">
+                  <span class="pillar-kicker">Trajectory</span>
+                  <strong>&lt;motion/&gt;</strong>
+                  <p>Summarize direction, speed, and scale change.</p>
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
+      </section>
+
+      <section class="teaser-section">
+        <div class="teaser-card teaser-unified">
+          <div class="figure-toolbar">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <div class="teaser-stage">
+            <div class="dynamic-teaser" id="dynamic-teaser">
+              <article class="dynamic-row baseline-row">
+                <div class="dynamic-row-head">
+                  <span class="dynamic-row-kicker">Top</span>
+                  <h3>Video Frames (w/o Motion Grounding)</h3>
+                </div>
+                <div class="frame-lane sparse-lane" id="sparse-lane" aria-label="Sparse baseline frames with missing motion between keyframes"></div>
+              </article>
+
+              <article class="dynamic-row grounded-row">
+                <div class="dynamic-row-head">
+                  <span class="dynamic-row-kicker grounded">Bottom</span>
+                  <h3>Video Frames + Spatial-Temporal-Trajectory Evidence Chain (w/ Motion Grounding)</h3>
+                </div>
+                <div class="frame-lane dense-lane" id="dense-lane" aria-label="Dense grounded frames with trajectory evidence">
+                  <svg class="trajectory-overlay" id="trajectory-overlay" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                      <marker id="traj-arrow-head" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                        <path d="M0,0 L6,3 L0,6 Z"></path>
+                      </marker>
+                    </defs>
+                    <path id="trajectory-path" d=""></path>
+                  </svg>
+                </div>
+              </article>
+
+              <div class="dynamic-qa">
+                <div class="qa-line">
+                  <span class="qa-tag">Question</span>
+                  <p>What is the girl's trajectory across the playground?</p>
+                </div>
+                <div class="qa-line">
+                  <span class="qa-tag">Answer</span>
+                  <p>The girl walks from the left side of the frame, passes in front of the jungle gym, and exits on the right side of the frame.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="teaser-explainer">
+            <div class="teaser-explainer-head">
+              <div>
+                <p class="section-label">Teaser Walkthrough</p>
+                <h2>Motion-o makes the evidence chain explicit</h2>
+                <p class="section-copy">
+                  Motion-o grounds the trajectory with explicit spatial, temporal, and motion tags. The baseline stays fluent, but leaves that structure implicit.
+                </p>
+              </div>
+            </div>
+
+            <div class="trace-grid">
+              <article class="trace-card accent-trace">
+                <div class="trace-header">
+                  <span class="trace-title">Motion-o</span>
+                  <span class="trace-badge">STT + MCoT</span>
+                </div>
+                <div class="stt-legend motion-legend" id="stt-legend">
+                  <span class="legend-chip" data-key="spatial">Spatial</span>
+                  <span class="legend-chip" data-key="temporal">Temporal</span>
+                  <span class="legend-chip" data-key="trajectory">Trajectory</span>
+                </div>
+                <div id="teaser-motiono" class="trace-output" aria-live="polite"></div>
+              </article>
+
+              <article class="trace-card baseline-trace">
+                <div class="trace-header">
+                  <span class="trace-title">Qwen2.5-VL-7B</span>
+                  <span class="trace-badge baseline-badge">Baseline CoT</span>
+                </div>
+                <div id="teaser-baseline" class="trace-output static-trace"></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pipeline" class="figure-section">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">Pipeline</p>
+            <h2>Teach the model to speak motion explicitly</h2>
+            <p class="section-copy">
+              Motion-o expands sparse keyframes into denser tracks, computes motion primitives, injects them into the reasoning chain during SFT,
+              and reinforces them with trajectory-grounded rewards during RL.
+            </p>
+          </div>
+        </div>
+        <div class="wide-figure-card compact-figure">
+          <img src="./assets/motion-o-pipeline.png" alt="Motion-o training pipeline figure">
+        </div>
+      </section>
+
+      <section id="comparison" class="comparison-section">
+        <div class="section-heading top-shift">
+          <div>
+            <p class="section-label">MCoT vs CoT</p>
+            <h2>The missing step is explicit motion</h2>
+            <p class="section-copy">
+              CoT narrates snapshots. MCoT inserts an inspectable motion step between them and makes trajectory reasoning explicit.
+            </p>
+          </div>
+        </div>
+        <div class="comparison-grid">
+          <div class="comparison-card compact-figure comparison-media">
+            <img src="./assets/cot-vs-mcot.png" alt="Comparison of chain of thought and motion chain of thought">
+          </div>
+          <div class="comparison-card compact-figure comparison-media comparison-gif-card">
+            <img src="./assets/mcotvscot.gif" alt="Animated MCoT versus CoT comparison" class="comparison-gif">
+          </div>
+        </div>
+      </section>
+
+      <section id="reasoning-demo" class="demo-section">
+        <div class="demo-heading">
+          <div>
+    
+            <p class="section-label">Interactive Demo</p>
+            <h2>Qualitative Examples</h2>
+          </div>
+          <div class="demo-nav">
+            <div class="demo-buttons" id="demo-buttons" aria-label="Example selector"></div>
+            <button class="nav-arrow" id="prev-demo" type="button" aria-label="Previous demo">&#8592;</button>
+            <button class="nav-arrow" id="next-demo" type="button" aria-label="Next demo">&#8594;</button>
+          </div>
+        </div>
+
+        <div class="demo-grid">
+          <div class="video-placeholder">
+            <div class="demo-meta">
+              <span class="demo-index" id="demo-index">01</span>
+              <span class="demo-title" id="demo-title">Duck trajectory</span>
+            </div>
+            <div class="video-screen">
+              <div class="video-flip" id="video-flip">
+                <div class="video-face gif-face">
+                  <img id="demo-gif" class="demo-gif" alt="Qualitative example sampled GIF preview">
+                </div>
+                <div class="video-face grounded-face">
+                  <div id="grounded-collage" class="grounded-collage" aria-live="polite"></div>
+                </div>
+              </div>
+            </div>
+            <div class="qa-block">
+              <div>
+                <span class="qa-label">Question</span>
+                <p id="demo-question"></p>
+              </div>
+              <div>
+                <span class="qa-label">Answer</span>
+                <p id="demo-answer"></p>
+              </div>
+            </div>
+            <div class="demo-controls">
+              <button id="play-toggle" class="button primary small" type="button">Watch me think</button>
+              <button id="grounded-toggle" class="button secondary small" type="button">See grounded frames</button>
+            </div>
+          </div>
+
+          <div class="reasoning-panel">
+            <div class="reasoning-header">
+              <p>Grounded reasoning trace</p>
+              <span class="live-pill">motion-aware</span>
+            </div>
+            <div id="reasoning-output" class="reasoning-output" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <div class="logo-modal" id="logo-modal" aria-hidden="true">
+    <div class="logo-modal-frame">
+      <img id="logo-modal-image" src="./assets/motion-o-box.png" alt="Motion-o reasoning ingredients">
+    </div>
+  </div>
+
+  <script src="./assets/script.js"></script>
+</body>
+</html>

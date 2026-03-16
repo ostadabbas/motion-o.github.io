@@ -1,0 +1,6 @@
+Question: what does the child wearing pink pants ride?
+
+Reasoning:
+The video shows a <obj>child</obj><box>[160,0,416,280]</box>at<t>2.6</t>s<motion obj="child" dir="E" speed="slow" scale="stable"/> sitting on a red tricycle. She is holding onto the handlebars and appears to be learning how to ride it. As she pedals forward, the camera follows her movement, confirming that the vehicle she is riding is indeed a tricycle.
+
+Answer: The child is riding a red tricycle.

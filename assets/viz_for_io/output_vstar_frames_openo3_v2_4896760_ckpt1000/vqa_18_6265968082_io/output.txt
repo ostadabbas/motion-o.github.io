@@ -1,0 +1,6 @@
+Question: who plays the white and black guitar on the stage?
+
+Reasoning:
+The video shows a <obj>guitarist</obj><box>[202,78,395,336]</box>at<t>2.8</t>s playing a white and black electric guitar on stage. He is positioned next to another guitarist. As the performance continues, the camera zooms in on the <obj>guitarist</obj><box>[151,78,403,336]</box>at<t>14.1</t>s<motion obj="guitarist" dir="STAT" speed="stationary" scale="stable"/>, providing a clear view of him singing into a microphone while playing his instrument. This visual evidence confirms that the person playing the white and black guitar is also singing.
+
+Answer: The person playing the white and black guitar is also singing into a microphone.
