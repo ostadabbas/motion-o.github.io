@@ -1,6 +1,9 @@
 # Motion-o Paper Materials
 
-This folder contains the materials accompanying our paper submission.
+[![Project Page](https://img.shields.io/badge/GitHub_Pages-Visit_IO_Page-181717?style=flat&logo=github)](https://ostadabbas.github.io/motion-o.github.io/)
+
+This folder contains the materials accompanying our paper submission.  
+**Link to the IO page:** [https://ostadabbas.github.io/motion-o.github.io/](https://ostadabbas.github.io/motion-o.github.io/)
 
 ## Contents
 
