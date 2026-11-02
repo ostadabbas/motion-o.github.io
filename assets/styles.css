@@ -1304,3 +1304,9 @@ input[type="range"] {
     grid-template-columns: 1fr;
   }
 }
+
+.hero-authors { text-align: center; margin: 14px 0 6px; }
+.hero-authors p { margin: 4px 0; }
+.author-list { display: flex; flex-wrap: wrap; gap: 6px 22px; justify-content: center; font-size: 1.1rem; font-weight: 600; }
+.author-affil { font-size: 0.95rem; opacity: 0.8; }
+.author-note { font-size: 0.8rem; opacity: 0.65; }
